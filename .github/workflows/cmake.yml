@@ -19,3 +19,7 @@ jobs:
     
     - name: Clone
       run: git clone https://github.com/Microsoft/vcpkg.git
+      
+    - name: Run bootstrap
+      working-directory: vcpkg
+      run: ./bootstrap-vcpkg.bat
