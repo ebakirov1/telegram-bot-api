@@ -23,3 +23,7 @@ jobs:
     - name: Run bootstrap
       working-directory: vcpkg
       run: ./bootstrap-vcpkg.bat
+      
+    - name: Next command
+      working-directory: vcpkg
+      run: ./vcpkg.exe install gperf:x64-windows openssl:x64-windows zlib:x64-windows
