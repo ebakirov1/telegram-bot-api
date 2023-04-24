@@ -27,3 +27,23 @@ jobs:
     - name: Next command
       working-directory: vcpkg
       run: ./vcpkg.exe install gperf:x64-windows openssl:x64-windows zlib:x64-windows
+      
+    - name: Remove Item
+      run: Remove-Item build -Force -Recurse -ErrorAction SilentlyContinue
+    
+    - name: Make dir build
+      run: mkdir build
+      
+    - name: Ab
+      working-directory: build
+      run: cmake -A x64 -DCMAKE_INSTALL_PREFIX:PATH=.. -DCMAKE_TOOLCHAIN_FILE:FILEPATH=../vcpkg/scripts/buildsystems/vcpkg.cmake ..
+      
+    - name: Ac
+      working-directory: build
+      run: cmake --build . --target install --config Release
+      
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v2.1.1
+      with:
+        path: bin
+    
